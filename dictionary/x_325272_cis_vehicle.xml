@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Vehicle" max_length="40" name="x_325272_cis_vehicle" type="collection">
+        <element label="Brand" max_length="200" name="brand" type="string"/>
+        <element label="Invoice Value" max_length="20" name="invoice_value" type="currency"/>
+        <element label="Model" max_length="200" name="model" type="string"/>
+        <element label="Year" max_length="40" name="year" type="integer"/>
+    </element>
+</database>

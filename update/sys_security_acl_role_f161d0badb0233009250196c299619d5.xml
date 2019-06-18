@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-18 15:12:12</sys_created_on>
+        <sys_id>f161d0badb0233009250196c299619d5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_325272_cis_vehicle.x_325272_cis.vehicle_user</sys_name>
+        <sys_package display_value="Car insurance services" source="x_325272_cis">5d0f76d6db0233009250196c29961992</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car insurance services">5d0f76d6db0233009250196c29961992</sys_scope>
+        <sys_security_acl display_value="x_325272_cis_vehicle">3961d0badb0233009250196c299619d2</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_f161d0badb0233009250196c299619d5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-18 15:12:12</sys_updated_on>
+        <sys_user_role display_value="x_325272_cis.vehicle_user" name="x_325272_cis.vehicle_user">2161d0badb0233009250196c2996199a</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>
