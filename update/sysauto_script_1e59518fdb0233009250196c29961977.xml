@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>CIS - check insurance policy end date</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2019-06-19 15:05:02</run_start>
+        <run_time>1970-01-01 10:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[//Se determina si una poliza está activa o no, se revisa para cada registro de poliza que la fecha de hoy sea menor a la fecha de vigencia de la poliza (end_date), en caso contrario el campo active pasa a false (se inactiva la poliza)
+
+checkActivePolicies();
+
+function checkActivePolicies(){
+
+var actual_date = new GlideDate();
+
+//Recorremos cada registro de poliza activa
+var policy = new GlideRecord('x_325272_cis_insurance_policy');
+policy.addQuery('active', true);
+policy.query();
+
+while(policy.next()){
+	//Revisamos que la fecha end_date sea mayor a la fecha actual
+	//Las variables no son azules porque no se encuentran guardadas dentro de ninguna función, el azul nos indica que vive en un entorno de ejecución particular
+	var end_date = GlideDateTime(policy.end_date);
+	var duration = GlideDateTime.subtract(actual_date, end_date);
+	var duration_days = duration.getDayPart();
+	
+	if(duration_days < 0){
+		
+		policy.active = false;
+		policy.notes = "Policy set inactive automatically";
+		policy.update();
+		
+	}
+	
+}
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-19 15:44:48</sys_created_on>
+        <sys_id>1e59518fdb0233009250196c29961977</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>CIS - check insurance policy end date</sys_name>
+        <sys_package display_value="Car insurance services" source="x_325272_cis">5d0f76d6db0233009250196c29961992</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car insurance services">5d0f76d6db0233009250196c29961992</sys_scope>
+        <sys_update_name>sysauto_script_1e59518fdb0233009250196c29961977</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-19 15:59:29</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
