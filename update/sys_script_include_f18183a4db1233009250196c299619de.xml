@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_325272_cis.getValidServicedVehicle</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>getValidServicedVehicle</name>
+        <script><![CDATA[function getValidServicedVehicle(insurance_user){
+	
+	var vehicle_list = '';
+	
+	//Buscamos todos los vehiculos cuyas polizas se encuentren activas y sean del insurance_user
+	var vehicle = new GlideRecord('x_325272_cis_vehicle');
+	vehicle.addQuery('insurance_policy.active', true);
+	vehicle.addQuery('insurance_policy.insurance_user', insurance_user);
+	vehicle.query();
+	
+	while(vehicle.next()){
+		
+		vehicle_list = vehicle_list + vehicle.getUniqueValue();
+		
+		if(vehicle.hasNext()){
+			
+			vehicle_list = vehicle_list + ',';
+			
+		}
+		
+	}
+	
+	return 'sys_idIN' + vehicle_list;
+	
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-24 15:01:18</sys_created_on>
+        <sys_id>f18183a4db1233009250196c299619de</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>getValidServicedVehicle</sys_name>
+        <sys_package display_value="Car insurance services" source="x_325272_cis">5d0f76d6db0233009250196c29961992</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Car insurance services">5d0f76d6db0233009250196c29961992</sys_scope>
+        <sys_update_name>sys_script_include_f18183a4db1233009250196c299619de</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-24 15:01:18</sys_updated_on>
+    </sys_script_include>
+</record_update>
